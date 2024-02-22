@@ -4,8 +4,8 @@
     {
         public Guid Id { get; set; }
         public float FinalScore { get => FinalScore; set { if (IsScoreValid(value)) FinalScore = value; } }
-        public Guid CompetitorId { get; set; }
-        public RoundCompetitor Competitor { get; set; }
+        public Guid RoundCompetitorId { get; set; }
+        public RoundCompetitor RoundCompetitor { get; set; }
         public Guid TrickId { get; set; }
         public Trick Trick { get; set; }
         public Guid SectionId { get; set; }
