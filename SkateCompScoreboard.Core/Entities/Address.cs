@@ -1,6 +1,6 @@
 ﻿namespace SkateCompScoreboard.Core.Entities
 {
-    public class Place
+    public class Address
     {
         public Guid Id { get; set; }
         public string Country { get; set; }
