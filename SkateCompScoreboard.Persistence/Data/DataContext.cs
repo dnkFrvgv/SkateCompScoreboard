@@ -13,7 +13,6 @@ namespace SkateCompScoreboard.Persistence.Data
     {
         public DataContext(DbContextOptions opt) : base(opt) { }
 
-
         public DbSet<Competition> Competitions {get;set;}
         public DbSet<Round> Rounds { get;set;}
         public DbSet<Competitor> Competitors { get;set;}
@@ -40,6 +39,9 @@ namespace SkateCompScoreboard.Persistence.Data
                 .HasOne(x => x.Competitor)
                 .WithMany(x => x.Rounds)
                 .HasForeignKey(x => x.CompetitorId);
+
+
+            modelBuilder.ApplyConfiguration(new CompetitionConfiguration());
         }
     }
 }
