@@ -5,6 +5,12 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkateCompScoreboard.Core", "SkateCompScoreboard.Core\SkateCompScoreboard.Core.csproj", "{623075F8-0E5A-47B5-BB6D-AA651882B9ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{8996A7DE-AA3F-46AC-9587-F1BA39A833DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkateCompScoreboard.Application", "SkateCompScoreboard.Application\SkateCompScoreboard.Application.csproj", "{D0CC9B4B-BD8D-4E3F-9E94-BFB46D8DA0E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkateCompScoreboard.Persistence", "SkateCompScoreboard.Persistence\SkateCompScoreboard.Persistence.csproj", "{0D86B5E4-1DCF-4DF5-9A16-D3A787CA0468}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{623075F8-0E5A-47B5-BB6D-AA651882B9ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{623075F8-0E5A-47B5-BB6D-AA651882B9ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{623075F8-0E5A-47B5-BB6D-AA651882B9ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8996A7DE-AA3F-46AC-9587-F1BA39A833DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8996A7DE-AA3F-46AC-9587-F1BA39A833DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8996A7DE-AA3F-46AC-9587-F1BA39A833DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8996A7DE-AA3F-46AC-9587-F1BA39A833DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0CC9B4B-BD8D-4E3F-9E94-BFB46D8DA0E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0CC9B4B-BD8D-4E3F-9E94-BFB46D8DA0E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0CC9B4B-BD8D-4E3F-9E94-BFB46D8DA0E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0CC9B4B-BD8D-4E3F-9E94-BFB46D8DA0E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D86B5E4-1DCF-4DF5-9A16-D3A787CA0468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D86B5E4-1DCF-4DF5-9A16-D3A787CA0468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D86B5E4-1DCF-4DF5-9A16-D3A787CA0468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D86B5E4-1DCF-4DF5-9A16-D3A787CA0468}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
