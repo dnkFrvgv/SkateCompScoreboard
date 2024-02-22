@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SkateCompScoreboard.Application.Competitions.Commands;
 using SkateCompScoreboard.Core.Entities;
+using System.Diagnostics;
 
 namespace API.Controllers
 {
@@ -22,31 +23,33 @@ namespace API.Controllers
             return await _mediator.Send(new ListCommand.Query());
         }
 
-        [HttpGet]
-        public async Task<Competition> Find(string id)
+        [HttpGet("{id}")]
+        public async Task<Competition> GetById(Guid id)
         {
-            return await _mediator.Send(new DetailCommand.Query());
+            return await _mediator.Send(new DetailCommand.Query { Id = id});
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(Competition competition)
         {
-            await _mediator.Send(new CreateCommand.Command{ Competition = competition });
+            return Ok(await _mediator.Send(new CreateCommand.Command{ Competition = competition }));
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Edit(Guid id, Competition competition)
+        {
+            competition.Id = id;
+
+            return Ok(await _mediator.Send(new Edit.Command { Competition = competition}));
+        }
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _mediator.Send(new Delete.Command { Id = id });
             return Ok();
         }
-
-/*        [HttpPut]
-        public async Task Edit(Competition competition)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        [HttpDelete]
-        public async Task Delete(Competition competition)
-        {
-            throw new NotImplementedException();
-        }*/
 
 
     }
