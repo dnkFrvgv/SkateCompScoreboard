@@ -1,4 +1,5 @@
 ﻿using SkateCompScoreboard.Core.Enums;
+using System.Text.Json.Serialization;
 
 namespace SkateCompScoreboard.Core.Entities
 {
@@ -10,7 +11,9 @@ namespace SkateCompScoreboard.Core.Entities
         public DateTime StartDateTime { get; set; }
         public Address Place { get; set; }
         public char Category { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public Modality Modality { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public CompetitionStatus Status { get; set; } = CompetitionStatus.READY_TO_START;
         public ICollection<Round> Rounds { get; } = new List<Round>();
     }
