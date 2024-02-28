@@ -1,8 +1,6 @@
 using API.Extentions;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using SkateCompScoreboard.Application.Competitions.Commands;
-using SkateCompScoreboard.Persistence.Data;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,11 +16,7 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<DataContext>(opt => {
-
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-
-});
+builder.Services.ConfigureSQLConnection(builder.Configuration);
 
 builder.Services.AddMediatR(typeof(ListCommand.Handler));
 

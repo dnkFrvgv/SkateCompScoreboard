@@ -21,7 +21,7 @@ namespace SkateCompScoreboard.Application.Competitions.Commands
             }
             public async Task<Competition> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Competitions.FindAsync(request.Id);
+                return await _context.Competitions.FindAsync(request.Id, cancellationToken);
             }
         }
     }

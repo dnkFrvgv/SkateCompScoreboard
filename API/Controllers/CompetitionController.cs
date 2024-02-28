@@ -8,11 +8,11 @@ namespace API.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class CompetitorController : ControllerBase
+    public class CompetitionController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public CompetitorController(IMediator mediator)
+        public CompetitionController(IMediator mediator)
         {
             _mediator = mediator;
         }

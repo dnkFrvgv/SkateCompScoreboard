@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SkateCompScoreboard.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
+using SkateCompScoreboard.Persistence.Seed;
 
 namespace SkateCompScoreboard.Persistence.Data
 {
