@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using SkateCompScoreboard.Persistence.Data;
 
-namespace SkateCompScoreboard.Application.Competitions.Commands
+namespace SkateCompScoreboard.Application.Competitions.Features
 {
     public class Delete
     {

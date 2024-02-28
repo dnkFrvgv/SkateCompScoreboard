@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using SkateCompScoreboard.Core.Entities;
 using SkateCompScoreboard.Persistence.Data;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkateCompScoreboard.Application.Competitions.Commands
+namespace SkateCompScoreboard.Application.Competitions.Features
 {
     public class Edit
     {
@@ -18,16 +19,22 @@ namespace SkateCompScoreboard.Application.Competitions.Commands
 
         public class Handler : IRequestHandler<Command>
         {
-            private DataContext _context;
+            private readonly DataContext _context;
+            private readonly IMapper _mapper;
 
-            public Handler(DataContext context)
+            public Handler(DataContext context, IMapper mapper)
             {
                 _context = context;
+                _mapper = mapper;
             }
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                /*Add mapper*/
+                var competition = await _context.Competitions.FindAsync(request.Competition.Id, cancellationToken);
+                _mapper.Map(request.Competition, competition);
+
+                await _context.SaveChangesAsync();
+
                 return Unit.Value;
             }
         }
