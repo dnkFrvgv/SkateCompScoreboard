@@ -1,5 +1,7 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SkateCompScoreboard.Application.Competitions.Dtos;
 using SkateCompScoreboard.Application.Competitions.Features;
 using SkateCompScoreboard.Core.Entities;
 using System.Diagnostics;
@@ -11,10 +13,12 @@ namespace API.Controllers
     public class CompetitionController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
-        public CompetitionController(IMediator mediator)
+        public CompetitionController(IMediator mediator, IMapper mapper)
         {
             _mediator = mediator;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -30,17 +34,23 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Competition competition)
+        public async Task<IActionResult> Create(CompetitionRequestDto competitionDto)
         {
-            return Ok(await _mediator.Send(new CreateCommand.Command{ Competition = competition }));
+            var competition = _mapper.Map<Competition>(competitionDto);
+
+            await _mediator.Send(new Create.Command { Competition = competition });
+            return Ok();
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Edit(Guid id, Competition competition)
+        public async Task<IActionResult> Edit(Guid id, CompetitionRequestDto competitionDto)
         {
+            var competition = _mapper.Map<Competition>(competitionDto);
+            
             competition.Id = id;
 
-            return Ok(await _mediator.Send(new Edit.Command { Competition = competition}));
+            await _mediator.Send(new Edit.Command { Competition = competition });
+            return Ok();
         }
 
 

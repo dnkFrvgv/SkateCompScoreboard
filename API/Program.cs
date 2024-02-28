@@ -1,6 +1,6 @@
 using API.Extentions;
 using MediatR;
-using SkateCompScoreboard.Application.Competitions.Commands;
+using SkateCompScoreboard.Application.Competitions.Features;
 using SkateCompScoreboard.Application.Core;
 using System.Text.Json.Serialization;
 
@@ -11,7 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.ConfigureCors();
 
 builder.Services.AddControllers().AddJsonOptions(options =>
-    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter())
+);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

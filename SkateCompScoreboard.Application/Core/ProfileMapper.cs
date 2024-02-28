@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using SkateCompScoreboard.Application.Competitions.Dtos;
 using SkateCompScoreboard.Core.Entities;
 
 namespace SkateCompScoreboard.Application.Core
@@ -8,6 +9,8 @@ namespace SkateCompScoreboard.Application.Core
         public ProfileMapper()
         {
             CreateMap<Competition, Competition>();
+            CreateMap<CompetitionRequestDto, Competition>();
+            CreateMap<Competition, CompetitionRequestDto>();
         }
     }
 }

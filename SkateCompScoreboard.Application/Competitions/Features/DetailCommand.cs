@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using SkateCompScoreboard.Core.Entities;
 using SkateCompScoreboard.Persistence.Data;
 
@@ -21,7 +22,7 @@ namespace SkateCompScoreboard.Application.Competitions.Features
             }
             public async Task<Competition> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Competitions.FindAsync(request.Id, cancellationToken);
+                return await _context.Competitions.Include(x=>x.Rounds).FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
             }
         }
     }

@@ -21,7 +21,7 @@ namespace SkateCompScoreboard.Application.Competitions.Features
 
             public async Task<List<Competition>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Competitions.ToListAsync(cancellationToken);
+                return await _context.Competitions.Include(x => x.Rounds).ToListAsync(cancellationToken);
             }
         }
     }

@@ -1,9 +1,10 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using SkateCompScoreboard.Core.Entities;
 using SkateCompScoreboard.Persistence.Data;
 namespace SkateCompScoreboard.Application.Competitions.Features
 {
-    public class CreateCommand
+    public class Create
     {
         public class Command : IRequest<Unit>
         {
@@ -12,7 +13,7 @@ namespace SkateCompScoreboard.Application.Competitions.Features
 
         public class Handler : IRequestHandler<Command>
         {
-            private DataContext _context;
+            private readonly DataContext _context;
 
             public Handler(DataContext context) 
             {
@@ -20,9 +21,10 @@ namespace SkateCompScoreboard.Application.Competitions.Features
             }
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-
                 _context.Competitions.Add(request.Competition);
-                await _context.SaveChangesAsync();
+
+                await _context.SaveChangesAsync(cancellationToken);
+
                 return Unit.Value;
             }
         }
