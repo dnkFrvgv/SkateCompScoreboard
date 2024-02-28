@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkateCompScoreboard.Application.Rounds.Commands
+namespace SkateCompScoreboard.Application.Rounds.Features
 {
     public class Detail
     {
