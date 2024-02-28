@@ -1,6 +1,7 @@
 using API.Extentions;
 using MediatR;
 using SkateCompScoreboard.Application.Competitions.Commands;
+using SkateCompScoreboard.Application.Core;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureSQLConnection(builder.Configuration);
 
 builder.Services.AddMediatR(typeof(ListCommand.Handler));
+builder.Services.AddAutoMapper(typeof(ProfileMapper).Assembly);
 
 var app = builder.Build();
 
