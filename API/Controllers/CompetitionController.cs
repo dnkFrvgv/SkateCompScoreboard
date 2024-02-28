@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SkateCompScoreboard.Application.Competitions.Commands;
+using SkateCompScoreboard.Application.Competitions.Features;
 using SkateCompScoreboard.Core.Entities;
 using System.Diagnostics;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CompetitionController : ControllerBase
     {
@@ -50,7 +50,5 @@ namespace API.Controllers
             await _mediator.Send(new Delete.Command { Id = id });
             return Ok();
         }
-
-
     }
 }
