@@ -8,9 +8,20 @@ namespace SkateCompScoreboard.Application.Core
     {
         public ProfileMapper()
         {
+            // competition
             CreateMap<Competition, Competition>();
             CreateMap<CompetitionRequestDto, Competition>();
             CreateMap<Competition, CompetitionRequestDto>();
+
+            // competitor
+            CreateMap<Competitor, Competitor>();
+
+            // line section 
+            CreateMap<LineSection, LineSection>();
+
+            // round
+            CreateMap<Round, Round>();
+
         }
     }
 }
