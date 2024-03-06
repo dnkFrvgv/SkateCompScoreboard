@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using SkateCompScoreboard.Core.Entities;
 using SkateCompScoreboard.Persistence.Data;
 
-namespace SkateCompScoreboard.Application.RoundCompetitors.Features
+namespace SkateCompScoreboard.Application.Rounds.Features
 {
-    public class List
+    public class ListCompetitorsOfRound
     {
         public class Query : IRequest<List<RoundCompetitor>> { }
 
@@ -20,7 +20,9 @@ namespace SkateCompScoreboard.Application.RoundCompetitors.Features
 
             public Task<List<RoundCompetitor>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return _context.RoundCompetitors.ToListAsync(cancellationToken);
+                return _context.RoundCompetitors
+                    .Include(x => x.Competitor)
+                    .ToListAsync(cancellationToken);
             }
         }
     }

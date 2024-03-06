@@ -1,14 +1,20 @@
 ﻿using MediatR;
 using SkateCompScoreboard.Core.Entities;
 using SkateCompScoreboard.Persistence.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SkateCompScoreboard.Application.Rounds.Features
+namespace SkateCompScoreboard.Application.SingleTrickSections.Features
 {
     public class Create
     {
         public class Command : IRequest<Unit>
         {
-            public Round Round { get; set; }
+            public Guid RoundId { get; set; }
+            public SingleTrickSection SingleTrickSection { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>
@@ -21,13 +27,13 @@ namespace SkateCompScoreboard.Application.Rounds.Features
             }
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var competition = await _context.Competitions.FindAsync(request.Round.CompetitionId, cancellationToken);
+                var round = await _context.Rounds.FindAsync(request.RoundId, cancellationToken);
 
-                if (competition == null) return Unit.Value;
+                if (round == null) return Unit.Value;
 
-                request.Round.Competition = competition;
+                request.SingleTrickSection.Round = round;
 
-                _context.Rounds.Add(request.Round);
+                _context.SingleTrickSections.Add(request.SingleTrickSection);
 
                 await _context.SaveChangesAsync();
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SkateCompScoreboard.Core.Entities;
 using SkateCompScoreboard.Persistence.Data;
 
-namespace SkateCompScoreboard.Application.Addresses
+namespace SkateCompScoreboard.Application.Addresses.Features
 {
     public class List
     {

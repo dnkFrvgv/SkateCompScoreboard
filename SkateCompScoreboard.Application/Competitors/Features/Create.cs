@@ -2,18 +2,18 @@
 using SkateCompScoreboard.Core.Entities;
 using SkateCompScoreboard.Persistence.Data;
 
-namespace SkateCompScoreboard.Application.Rounds.Features
+namespace SkateCompScoreboard.Application.Competitors.Features
 {
     public class Create
     {
         public class Command : IRequest<Unit>
         {
-            public Round Round { get; set; }
+            public Competitor Competitor { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>
         {
-            private DataContext _context;
+            private readonly DataContext _context;
 
             public Handler(DataContext context)
             {
@@ -21,15 +21,9 @@ namespace SkateCompScoreboard.Application.Rounds.Features
             }
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var competition = await _context.Competitions.FindAsync(request.Round.CompetitionId, cancellationToken);
+                _context.Competitors.Add(request.Competitor);
 
-                if (competition == null) return Unit.Value;
-
-                request.Round.Competition = competition;
-
-                _context.Rounds.Add(request.Round);
-
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync(cancellationToken);
 
                 return Unit.Value;
             }

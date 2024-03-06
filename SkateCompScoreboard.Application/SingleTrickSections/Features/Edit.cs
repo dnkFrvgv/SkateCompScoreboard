@@ -3,13 +3,13 @@ using MediatR;
 using SkateCompScoreboard.Core.Entities;
 using SkateCompScoreboard.Persistence.Data;
 
-namespace SkateCompScoreboard.Application.Rounds.Features
+namespace SkateCompScoreboard.Application.SingleTrickSections.Features
 {
     public class Edit
     {
-        public class Command : IRequest<Unit> 
+        public class Command : IRequest<Unit>
         {
-            public Round Round { get; set; }
+            public SingleTrickSection SingleTrickSection { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>
@@ -24,9 +24,9 @@ namespace SkateCompScoreboard.Application.Rounds.Features
             }
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var round = await _context.Rounds.FindAsync(request.Round.Id, cancellationToken);
+                var singleTrickSection = await _context.SingleTrickSections.FindAsync(request.SingleTrickSection.Id, cancellationToken);
 
-                _mapper.Map(request.Round, round);
+                _mapper.Map(request.SingleTrickSection, singleTrickSection);
 
                 await _context.SaveChangesAsync();
 

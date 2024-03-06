@@ -10,6 +10,7 @@ namespace SkateCompScoreboard.Application.Competitions.Features
         public class Query : IRequest<Competition>
         {
             public Guid Id { get; set; }
+
         }
 
         public class Handler : IRequestHandler<Query, Competition>
@@ -22,7 +23,9 @@ namespace SkateCompScoreboard.Application.Competitions.Features
             }
             public async Task<Competition> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Competitions.Include(x=>x.Rounds).FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
+                return await _context.Competitions
+                    .Include(x=>x.Rounds)
+                    .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
             }
         }
     }
