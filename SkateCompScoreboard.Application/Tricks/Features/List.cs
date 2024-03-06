@@ -5,7 +5,7 @@ using SkateCompScoreboard.Persistence.Data;
 
 namespace SkateCompScoreboard.Application.Tricks.Features
 {
-    internal class List
+    public class List
     {
         public class Query : IRequest<List<Trick>> { }
 
