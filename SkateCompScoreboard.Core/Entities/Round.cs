@@ -1,4 +1,5 @@
 ﻿using SkateCompScoreboard.Core.Enums;
+using System.Text.Json.Serialization;
 
 namespace SkateCompScoreboard.Core.Entities
 {
@@ -11,8 +12,9 @@ namespace SkateCompScoreboard.Core.Entities
         public int NumberOfSections { get; set; }
         public int RoundOrder { get; set; }
         public RoundStatus Status { get; set; }
-
+        
         public Guid CompetitionId { get; set; }
+        [JsonIgnore]
         public Competition Competition { get; set; }
         public ICollection<Section> Sections { get; } = new List<Section>();
         public ICollection<RoundCompetitor> Competitors { get; } = new List<RoundCompetitor>();

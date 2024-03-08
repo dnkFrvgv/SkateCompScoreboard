@@ -52,5 +52,11 @@ namespace API.Controllers
 
             return Ok();
         }
+
+        [HttpGet("{id}")]
+        public async Task<List<RoundCompetitor>> Competitors(Guid roundId)
+        {
+            return await _mediator.Send(new ListCompetitorsOfRound.Query { RoundId = roundId });
+        }
     }
 }

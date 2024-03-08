@@ -20,7 +20,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.ConfigureSQLConnection(builder.Configuration);
 
-builder.Services.AddMediatR(typeof(ListCommand.Handler));
+builder.Services.AddMediatR(typeof(List.Handler));
 builder.Services.AddAutoMapper(typeof(ProfileMapper).Assembly);
 
 var app = builder.Build();

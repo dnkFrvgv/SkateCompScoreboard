@@ -21,5 +21,25 @@ namespace API.Controllers
         {
             return await _mediator.Send(new List.Query());
         }
+
+        [HttpGet("{id}")]
+        public async Task<Address> GetById(Guid id) 
+        {
+            return await _mediator.Send(new Detail.Query { Id = id });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Address address)
+        {
+            await _mediator.Send(new Create.Command { Address = address });
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _mediator.Send(new Delete.Command { Id = id });
+            return Ok();
+        }
     }
 }

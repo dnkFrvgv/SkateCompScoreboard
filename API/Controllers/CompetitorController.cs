@@ -22,29 +22,34 @@ namespace API.Controllers
             return await _mediator.Send(new List.Query());
         }
 
-/*        // GET api/<CompetitorController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<Competitor> Get(Guid id)
         {
-            return "value";
+            return await _mediator.Send(new Detail.Query { Id = id });
         }
 
-        // POST api/<CompetitorController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post(Competitor competitor)
         {
+            await _mediator.Send(new Create.Command { Competitor = competitor });
+
+            return Ok();
         }
 
-        // PUT api/<CompetitorController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(Guid id, Competitor competitor)
         {
+            competitor.Id = id;
+
+            await _mediator.Send(new Edit.Command { Competitor = competitor });
+            return Ok();
         }
 
-        // DELETE api/<CompetitorController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
-        }*/
+            await _mediator.Send(new Delete.Command { Id = id });
+            return Ok();
+        }
     }
 }

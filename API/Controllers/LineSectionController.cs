@@ -23,7 +23,7 @@ namespace API.Controllers
         {
             return await _mediator.Send(new List.Query());
         }
-/*
+
         // GET api/<LineSectionController>/5
         [HttpGet("{id}")]
         public string Get(int id)
@@ -47,6 +47,6 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-        }*/
+        }
     }
 }

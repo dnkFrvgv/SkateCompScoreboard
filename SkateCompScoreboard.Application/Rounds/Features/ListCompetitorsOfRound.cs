@@ -7,7 +7,10 @@ namespace SkateCompScoreboard.Application.Rounds.Features
 {
     public class ListCompetitorsOfRound
     {
-        public class Query : IRequest<List<RoundCompetitor>> { }
+        public class Query : IRequest<List<RoundCompetitor>> 
+        {
+            public Guid RoundId {  get; set; }
+        }
 
         public class Handler : IRequestHandler<Query, List<RoundCompetitor>>
         {
@@ -21,6 +24,7 @@ namespace SkateCompScoreboard.Application.Rounds.Features
             public Task<List<RoundCompetitor>> Handle(Query request, CancellationToken cancellationToken)
             {
                 return _context.RoundCompetitors
+                    .Where(x=>x.RoundId == request.RoundId)
                     .Include(x => x.Competitor)
                     .ToListAsync(cancellationToken);
             }
