@@ -4,7 +4,8 @@ Bem-vindo à API de Registro de Pontuações para competições de skate, inspirada n
 
 ## Tecnologias Utilizadas
 
-- ASP.NET Core 3.1
+- .NET 7.0
+- ASP.NET Core
 - Entity Framework Core para acesso a dados
 - SQL Server para armazenamento de dados
 - Swagger para documentação da API
